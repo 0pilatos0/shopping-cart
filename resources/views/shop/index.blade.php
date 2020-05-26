@@ -14,7 +14,7 @@
                 <p class="description">{{ $product->description }}</p>
                 <p>
                     <div ><h5 class="price">{{ $product->price }}$</h5></div>
-                    <a href="#" class="btn btn-success" role="button">Add to Cart</a></p>
+                    <a href="{{ route('product.addToCart', ['id' => $product->id])}}" class="btn btn-success" role="button">Add to Cart</a></p>
             </div>
           </div>
         </div>

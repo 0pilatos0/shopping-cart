@@ -23,6 +23,7 @@ class UserController extends Controller
             'password' => bcrypt($request->input('password'))
         ]);
         $user->save();
+        Auth::login($user);
         return redirect()->route('product.index');
     }
     public function getSignin(){
@@ -41,5 +42,9 @@ class UserController extends Controller
     }
     public function getProfile(){
         return view('user.profile');
+    }
+    public function getLogout(){
+        Auth::logout();
+        return redirect()->route('product.index');
     }
 }
