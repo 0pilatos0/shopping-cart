@@ -13,6 +13,7 @@ class ProductController extends Controller
 {
     public function getIndex(){
         $products = Product::all();
+        
         return view('shop.index', ['products' => $products]);
     }
     public function getAddToCart(Request $request, $id) {
@@ -23,5 +24,13 @@ class ProductController extends Controller
 
         $request->session()->put('cart', $cart);
         return redirect()->route('product.index');
+    }
+    public function getCart(){
+        if (!session()->has('cart')){
+            return view('shop.shopping-cart');
+        }
+        $oldCart = session()->get('cart');
+        $cart = new Cart($oldCart);
+        return view('shop.shopping-cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
 }
