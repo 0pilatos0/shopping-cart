@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
+use Session;
 
 
 class UserController extends Controller
@@ -24,6 +25,11 @@ class UserController extends Controller
         ]);
         $user->save();
         Auth::login($user);
+        if (Session::has('oldURL')){
+            $oldURL = Session::get('oldURL');
+            Session::forget('oldURL');
+            return redirect()->to($oldURL);
+        }
         return redirect()->route('product.index');
     }
     public function getSignin(){
@@ -36,6 +42,11 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])){
+            if (Session::has('oldURL')){
+                $oldURL = Session::get('oldURL');
+                Session::forget('oldURL');
+                return redirect()->to($oldURL);
+            }
             return redirect()->route('user.profile');
         } 
         return redirect()->route('user.signin');
