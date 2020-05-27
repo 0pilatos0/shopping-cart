@@ -13,8 +13,8 @@ use Session;
 
 class ProductController extends Controller
 {
-    public function getIndex(){
-        $products = Product::all();
+    public function getIndex($id = 1){
+        $products = Product::all()->where('cato', '=', $id);
         
         return view('shop.index', ['products' => $products]);
     }
