@@ -13,11 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{id?}', [
+Route::get('/', [
     'uses' => 'ProductController@getIndex',
     'as' => 'product.index'
 ]);
-
+Route::get('/shop/{id?}', [
+    'uses' => 'ProductController@getShop',
+    'as' => 'product.shop'
+]);
 
 Route::get('/add-to-cart/{id}', [
     'uses' => 'ProductController@getAddToCart',

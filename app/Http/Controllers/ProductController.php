@@ -13,10 +13,12 @@ use Session;
 
 class ProductController extends Controller
 {
-    public function getIndex($id = 1){
+    public function getIndex(){
+        return view('shop.index');
+    }
+    public function getShop($id = 1){
         $products = Product::all()->where('cato', '=', $id);
-        
-        return view('shop.index', ['products' => $products]);
+        return view('shop.shop', ['products' => $products]);
     }
     public function getAddToCart(Request $request, $id) {
         $product = Product::find($id);
@@ -25,7 +27,7 @@ class ProductController extends Controller
         $cart->add($product, $product->id);
 
         $request->session()->put('cart', $cart);
-        return redirect()->route('product.index');
+        return redirect()->route('product.shop');
     }
     public function getReduceByOne($id) {
         $oldCart = session()->has('cart') ? session()->get('cart') : null;
@@ -83,6 +85,6 @@ class ProductController extends Controller
         Auth::user()->orders()->save($order);
 
         Session::forget('cart');
-        return redirect()->route('product.index')->with('success', 'Successfully purchased products');
+        return redirect()->route('product.shop')->with('success', 'Successfully purchased products');
     }
 }

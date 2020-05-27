@@ -12,11 +12,11 @@
         <i class="fas fa-map"></i> Categorieën
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('product.index', ['id' => 1])}}">Categorie 1</a>
-            <a class="dropdown-item" href="{{ route('product.index', ['id' => 2])}}">Categorie 2</a>
-            <a class="dropdown-item" href="{{ route('product.index', ['id' => 3])}}">Categorie 3</a>
-            <a class="dropdown-item" href="{{ route('product.index', ['id' => 4])}}">Categorie 4</a>
-            <a class="dropdown-item" href="{{ route('product.index', ['id' => 5])}}">Categorie 5</a>
+            <a class="dropdown-item" href="{{ route('product.shop', ['id' => 1])}}">Categorie 1</a>
+            <a class="dropdown-item" href="{{ route('product.shop', ['id' => 2])}}">Categorie 2</a>
+            <a class="dropdown-item" href="{{ route('product.shop', ['id' => 3])}}">Categorie 3</a>
+            <a class="dropdown-item" href="{{ route('product.shop', ['id' => 4])}}">Categorie 4</a>
+            <a class="dropdown-item" href="{{ route('product.shop', ['id' => 5])}}">Categorie 5</a>
         </div>
     </div>
     <div class="nav-item dropdown">

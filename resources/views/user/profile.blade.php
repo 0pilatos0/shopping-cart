@@ -17,7 +17,7 @@
                     @foreach($order->cart->items as $item)
                     <li class="list-group-item"> 
                         {{ $item['item']['title'] }} || {{ $item['qty']}}x
-                    <span class="badge">${{ $item['price'] }}</span></li>
+                    <span class="badge badge-secondary">${{ $item['price'] }}</span></li>
                     @endforeach
                 </ul> 
                 </blockquote>
