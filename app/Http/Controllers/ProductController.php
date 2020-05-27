@@ -7,6 +7,12 @@ use App\Order;
 use App\Cart;
 use Auth;
 use Illuminate\Http\Request;
+use App\Mail\confirm;
+use Illuminate\Support\Facades;
+
+use App\Http\Controllers\Controller;
+use App\Mail\OrderShipped;
+use Illuminate\Support\Facades\Mail;
 
 use App\Http\Requests;
 use Session;
@@ -100,6 +106,8 @@ class ProductController extends Controller
 
         Auth::user()->orders()->save($order);
 
+        Mail::to('Paulvanderlei@hotmail.nl')->send(new confirm());
+        
         Session::forget('cart');
         return redirect()->route('product.shop')->with('success', 'Successfully purchased products');
     }

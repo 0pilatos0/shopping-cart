@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\confirm;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,10 @@ Route::get('/', [
     'uses' => 'ProductController@getIndex',
     'as' => 'product.index'
 ]);
+Route::get('/email', function () {
+
+    return new Confirm();
+});
 Route::get('/shop/{id?}', [
     'uses' => 'ProductController@getShop',
     'as' => 'product.shop'
