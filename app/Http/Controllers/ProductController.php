@@ -42,4 +42,14 @@ class ProductController extends Controller
         $total = $cart->totalPrice;
         return view('shop.checkout', ['total' => $total]);
     }
+    public function postCheckout(Request $request){
+        if (!session()->has('cart')){
+            return redirect()->route('shop.shoppingCart');
+        }
+        $oldCart = session()->get('cart');
+        $cart = new Cart($oldCart);
+
+        Session::forget('cart');
+        return redirect()->route('product.index')->with('success', 'Successfully purchased products');
+    }
 }
