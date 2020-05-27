@@ -20,6 +20,10 @@ class ProductController extends Controller
         $products = Product::all()->where('cato', '=', $id);
         return view('shop.shop', ['products' => $products]);
     }
+    public function getProduct($id = 1){
+        $products = Product::all()->where('id', '=', $id);
+        return view('shop.product', ['products' => $products]);
+    }
     public function getAddToCart(Request $request, $id) {
         $product = Product::find($id);
         $oldCart = session()->has('cart') ? session()->get('cart') : null;

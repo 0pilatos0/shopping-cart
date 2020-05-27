@@ -19,7 +19,7 @@
           <div class="thumbnail">
             <img src="{{ $product->imagePath }}" alt="">
               <div class="caption">
-                <h4>{{ $product->title }}</h4>
+                <a href="{{route('product.product', ['id' => $product->id])}}"><h4>{{ $product->title }}</h4></a>
                 <p class="description">{{ $product->description }}</p>
                 <p>
                     <div ><h5 class="price">{{ $product->price }}$</h5></div>

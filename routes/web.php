@@ -21,6 +21,10 @@ Route::get('/shop/{id?}', [
     'uses' => 'ProductController@getShop',
     'as' => 'product.shop'
 ]);
+Route::get('/product/{id?}', [
+    'uses' => 'ProductController@getProduct',
+    'as' => 'product.product'
+]);
 
 Route::get('/add-to-cart/{id}', [
     'uses' => 'ProductController@getAddToCart',
