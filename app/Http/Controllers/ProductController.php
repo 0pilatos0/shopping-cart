@@ -45,6 +45,18 @@ class ProductController extends Controller
         }
         return redirect()->route('product.shoppingCart');
     }
+    public function getincreaseByOne($id) {
+        $oldCart = session()->has('cart') ? session()->get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->increaseByOne($id);
+
+        if(count($cart->items) > 0){
+            Session::put('cart', $cart);
+        } else{
+            Session::forget('cart');
+        }
+        return redirect()->route('product.shoppingCart');
+    }
     public function getRemoveItem($id){
         $oldCart = session()->has('cart') ? session()->get('cart') : null;
         $cart = new Cart($oldCart);

@@ -19,6 +19,7 @@
                         </button>
                         <div class="dropdown-menu ">
                             <a class="dropdown-item" href="{{ route('product.reduceByOne', ['id' => $product['item']['id']]) }}">Verwijder 1</a>
+                            <a class="dropdown-item" href="{{ route('product.increaseByOne', ['id' => $product['item']['id']]) }}">Voeg 1 toe</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('product.remove', ['id' => $product['item']['id']]) }}">Verwijder alle</a>
                         </div>

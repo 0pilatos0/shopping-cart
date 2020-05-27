@@ -38,6 +38,10 @@ Route::get('/reduce/{id}', [
     'uses' => 'ProductController@getReduceByOne',
     'as' => 'product.reduceByOne'
 ]);
+Route::get('/increase/{id}', [
+    'uses' => 'ProductController@getincreaseByOne',
+    'as' => 'product.increaseByOne'
+]);
 Route::get('/remove/{id}', [
     'uses' => 'ProductController@getRemoveItem',
     'as' => 'product.remove'
