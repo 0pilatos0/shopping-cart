@@ -103,12 +103,14 @@ class ProductController extends Controller
         $order->cart = serialize($cart);
         $order->address = $request->input('address');
         $order->name = $request->input('name');
+        $adressto = $request->input('email');
 
         Auth::user()->orders()->save($order);
 
-        Mail::to('Paulvanderlei@hotmail.nl')->send(new confirm());
+        Mail::to($adressto)->send(new confirm());
         
         Session::forget('cart');
         return redirect()->route('product.shop')->with('success', 'Successfully purchased products');
     }
 }
+
