@@ -47,7 +47,7 @@
                             <td></td>
                             <td></td>
                             <td><strong>Total</strong></td>
-                            <td class="text-right"><strong>{{$totalPrice}}</strong></td>
+                            <td class="text-right"><strong>{{$totalPrice}} €</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -56,7 +56,7 @@
         <div class="col mb-2">
             <div class="row">
                 <div class="col-sm-12  col-md-6">
-                    <a class="btn btn-lg btn-block btn-light">Continue Shopping</a>
+                    <a class="btn btn-lg btn-block btn-light" href="{{ route('product.shop')}}">Continue Shopping</a>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
                     <a class="btn btn-lg btn-block btn-success " href="{{ route('checkout') }}">Checkout</a>

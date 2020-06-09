@@ -8,24 +8,26 @@
         <br><br>
         @foreach($orders as $order)
         <div class="card">
-            <div class="card-header">
-            <strong>Total Price: ${{ $order->cart->totalPrice }}</strong>
-            </div>
+            <h5 class="card-header"><strong>Total Price: ${{ $order->cart->totalPrice }}</strong></h5>
+            <div class="card-body">
+            <h4>Product(en):</h4>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
                 <ul class="list-group">
-                    @foreach($order->cart->items as $item)
-                    <li class="list-group-item"> 
-                        {{ $item['item']['title'] }} || {{ $item['qty']}}x
-                    <span class="badge badge-secondary">${{ $item['price'] }}</span></li>
+                @foreach($order->cart->items as $item)
+                    <li class="list-group-item">{{ $item['item']['title'] }} || {{ $item['qty']}}x
+                        <span class="badge badge-secondary">${{ $item['price'] }}</span>
+                    </li>
                     @endforeach
-                </ul> 
-                </blockquote>
+                    </ul> 
+                    </blockquote>
+                    </div>
             </div>
-        </div>
-        <br>
-       
+            </div>
+            <br><br>
+
         @endforeach
     </div>
 </div>
+
 @endsection
