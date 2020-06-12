@@ -15,7 +15,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">E-Mail voor bevestiging</label> 
-                    <input id="email" name="email" type="text" required="required" class="form-control">
+                    <input id="email" name="email" type="email" required="required" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label> 
@@ -44,6 +44,7 @@
             </div>
             {{ csrf_field()}}
             <button type="submit" class="btn btn-success">Buy now</button>
+            
         </form>
     </div>
 </div>
