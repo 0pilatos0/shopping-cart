@@ -30,7 +30,6 @@ Route::get('/product/{id?}', [
     'uses' => 'ProductController@getProduct',
     'as' => 'product.product'
 ]);
-
 Route::get('/add-to-cart/{id}', [
     'uses' => 'ProductController@getAddToCart',
     'as' => 'product.addToCart'
@@ -52,43 +51,40 @@ Route::get('/remove/{id}', [
     'as' => 'product.remove'
 ]);
 
-Route::get('/checkout',[
-    'uses' => 'ProductController@getCheckout',
-    'as' => 'checkout',
-    'middleware' => 'auth'
-]);
-Route::post('/checkout', [
-    'uses' => 'ProductController@postCheckout',
-    'as' => 'checkout',
-    'middleware' => 'auth'
-]);
-Route::get('/signup', [
-    'uses' => 'UserController@getSignup',
-    'as' => 'user.signup',
-    'middleware' => 'guest'
-]);
-Route::post('/signup', [
-    'uses' => 'UserController@postSignup',
-    'as' => 'user.signup',
-    'middleware' => 'guest'
-]);
-Route::get('/signin', [
-    'uses' => 'UserController@getSignin',
-    'as' => 'user.signin',
-    'middleware' => 'guest'
-]);
-Route::post('/signin', [
-    'uses' => 'UserController@postSignin',
-    'as' => 'user.signin',
-    'middleware' => 'guest'
-]);
-Route::get('user/profile', [
-    'uses' => 'UserController@getProfile',
-    'as' => 'user.profile',
-    'middleware' => 'auth'
-]);
-Route::get('user/logout', [
-    'uses' => 'UserController@getLogout',
-    'as' => 'user.logout',
-    'middleware' => 'auth'
-]);
+
+Route::middleware('auth')->group(function () {
+    Route::get('/checkout',[
+        'uses' => 'ProductController@getCheckout',
+        'as' => 'checkout'
+    ]);
+    Route::post('/checkout', [
+        'uses' => 'ProductController@postCheckout',
+        'as' => 'checkout'
+    ]);
+    Route::get('user/profile', [
+        'uses' => 'UserController@getProfile',
+        'as' => 'user.profile'
+    ]);
+    Route::get('user/logout', [
+        'uses' => 'UserController@getLogout',
+        'as' => 'user.logout'
+    ]);
+});
+Route::middleware('guest')->group(function () {
+    Route::get('/signup', [
+        'uses' => 'UserController@getSignup',
+        'as' => 'user.signup'
+    ]);
+    Route::post('/signup', [
+        'uses' => 'UserController@postSignup',
+        'as' => 'user.signup'
+    ]);
+    Route::get('/signin', [
+        'uses' => 'UserController@getSignin',
+        'as' => 'user.signin'
+    ]);
+    Route::post('/signin', [
+        'uses' => 'UserController@postSignin',
+        'as' => 'user.signin'
+    ]);
+});
