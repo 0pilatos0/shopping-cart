@@ -18,10 +18,6 @@ Route::get('/', [
     'uses' => 'ProductController@getIndex',
     'as' => 'product.index'
 ]);
-Route::get('/email', function () {
-
-    return new Confirm();
-});
 Route::get('/shop/{id?}', [
     'uses' => 'ProductController@getShop',
     'as' => 'product.shop'
@@ -50,7 +46,6 @@ Route::get('/remove/{id}', [
     'uses' => 'ProductController@getRemoveItem',
     'as' => 'product.remove'
 ]);
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/checkout',[
@@ -87,4 +82,8 @@ Route::middleware('guest')->group(function () {
         'uses' => 'UserController@postSignin',
         'as' => 'user.signin'
     ]);
+});
+Route::get('/email1234567890', function () {
+
+    return new Confirm();
 });
