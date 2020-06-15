@@ -52,7 +52,7 @@ class UserController extends Controller
         return redirect()->route('user.signin');
     }
     public function getProfile(){
-        $orders = Auth::user()->orders;
+        $orders = Auth::user()->orders->reverse();
         $orders->transform(function($order, $key){
             $order->cart = unserialize($order->cart);
             return $order;
